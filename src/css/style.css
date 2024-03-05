@@ -1881,4 +1881,24 @@ input, select, option, textarea {
 
 select, option {
   height: 48px;
+}
+
+.link {
+  color: #1B69D2;
+}
+
+.link-title {
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+.link-title:hover {
+  text-decoration: underline;
+}
+
+.link-footer {
+  padding: 8px;
+  transition: 0.7s ease;
+}
+.link-footer:hover {
+  padding: 8px 8px 8px 16px;
 }/*# sourceMappingURL=style.css.map */
