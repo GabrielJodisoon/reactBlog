@@ -15,15 +15,19 @@ import api from 'services/api';
 
 
 //HOOKS
-import { useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 
+
+//header and footer
+import Header from "pages/Header";
+import Footer from "pages/Footer";
 
 const Home = () => {
 
     //variaveis de estado
-    const[main, setMain] = useState([]);
-    const[mostseen, setMostseen] = useState([]);
-    const[banner, setBanner] = useState([]);
+    const [main, setMain] = useState([]);
+    const [mostseen, setMostseen] = useState([]);
+    const [banner, setBanner] = useState([]);
 
 
     //faca isso quando o componente montar
@@ -31,29 +35,32 @@ const Home = () => {
 
         // requisicao para posts com star = 5
         api.get('/posts?star=5&_sort=date&_limit=2')
-        .then((response) => {
-            setMain(response.data)
-        })
+            .then((response) => {
+                setMain(response.data)
+            })
 
         // requisicao para banner
-        api.get('/posts?_sort=date&_order=desc&_limit=1')
-        .then((response) =>{
-            setBanner(response.data)
-        })
+        api.get('/posts?_sort=date&_limit=1')
+            .then((response) => {
+                setBanner(response.data)
+            })
 
         // requisicao para post mais vistos
         api.get('posts?_limit=3')
-        .then((response) =>{
-            setMostseen(response.data)
-        })
+            .then((response) => {
+                setMostseen(response.data)
+            })
 
     }, [])
 
-    
+
 
 
     return (
         <>
+
+            <Header></Header>
+
             <Hero />
 
             <section className="container">
@@ -71,12 +78,12 @@ const Home = () => {
                     </div>
                     <div className="grid-7">
 
-                       {
-                        main.map((item) => {
-                            return <Main key={item.id} content={item}/>
+                        {
+                            main.map((item) => {
+                                return <Main key={item.id} content={item} />
 
-                        })
-                       }
+                            })
+                        }
 
                     </div>
                 </div>
@@ -88,9 +95,11 @@ const Home = () => {
 
                 <h3 className='ml-2 mb-3'>Mais Vistos</h3>
                 <div className='row'>
-                    <Card />
-                    <Card />
-                    <Card />
+                    {
+                        mostseen.map((item) => {
+                            return < Card key={item.id} content={item} />
+                        })
+                    }
                 </div>
 
 
@@ -98,7 +107,20 @@ const Home = () => {
             </section>
 
 
-            <Banner />
+            <section>
+
+                {
+                    banner.map((item) => {
+
+                        return <Banner key={item.id} content={item}></Banner>
+                    })
+                }
+
+
+
+
+            </section>
+
 
 
             <section className="container ">
@@ -113,6 +135,8 @@ const Home = () => {
 
 
             </section>
+
+            <Footer></Footer>
         </>
     );
 }

@@ -315,34 +315,29 @@ $gutter: 32px;
 
 .card{
   border: 1px solid $black-light;
-  border-radius: 8px;
-  background-color: rgba(21, 27, 38, 0);
-  transition: .5s ease;
+  border-radius: 4px;
+  background-color: rgba(15, 20, 31, 0);
 
-
+  transition: .2s ease;
 
   &:hover{
-    background-color: rgba(21, 27, 38, 0.3);
-
+    background-color: rgba(15, 20, 31, 0.2);
   }
 }
 
-
-
 .thumb{
+
   img{
     transform: scale(1.05);
-    transition: .4s ease-in;
+    transition: .5s ease;
   }
-
+  
   &:hover{
     img{
       transform: scale(1.1);
     }
   }
 }
-
-
 
 .img-banner{
   width: 100%;

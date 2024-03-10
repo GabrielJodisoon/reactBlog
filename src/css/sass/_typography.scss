@@ -260,14 +260,6 @@ h6 {
     @include typeface-1(h6, mobile);
   }
 }
-h7 {
-  color: $white-dark;
-
-  @include typeface-1(h7, desktop);
-  @include responsive(s) {
-    @include typeface-1(h7, mobile);
-  }
-}
 
 .h7 {
 

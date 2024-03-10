@@ -24,19 +24,6 @@
   }
 }
 
-.icon-m{
-  max-width: 96px;
-  transition: .5s ease;
-
-  @include responsive(s){
-    max-width: 92px;
-  }
-
-  &:hover{
-    transform: translate(0,-4px,0);
-  }
-}
-
 .icon-l{
   max-width: 120px;
   transition: .5s ease;

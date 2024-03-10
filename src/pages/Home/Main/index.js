@@ -6,17 +6,20 @@ import { useState, useEffect } from 'react';
 //api
 import api from 'services/api';
 
-const Main = ({content}) => {
+//Link
+import {Link} from 'react-router-dom';
+
+const Main = ({ content }) => {
 
     const [user, setUser] = useState([]);
 
-    useEffect(() =>{
+    useEffect(() => {
 
-        if(content){
+        if (content) {
             api.get('/user/' + content.id_user)
-            .then((response) =>{
-                setUser(response.data);
-            })
+                .then((response) => {
+                    setUser(response.data);
+                })
         }
     }, [])
 
@@ -30,7 +33,7 @@ const Main = ({content}) => {
                             <h6 className="color-gray">{content.date}</h6>
                             <h6 className="uppercase color-primary">{content.category}</h6>
 
-                            <h4>{content.title}</h4>
+                            <Link to={"/post/" + content.id}><h4>{content.title}</h4> </Link>
                             <p className="mt-1">{content.resume}
                             </p>
                             <div className="flex-start-row mt-1">
