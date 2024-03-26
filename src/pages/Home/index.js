@@ -28,6 +28,7 @@ const Home = () => {
     const [main, setMain] = useState([]);
     const [mostseen, setMostseen] = useState([]);
     const [banner, setBanner] = useState([]);
+    const [mostViewed, setMostViewed] = useState([]);
 
 
     //faca isso quando o componente montar
@@ -40,15 +41,22 @@ const Home = () => {
             })
 
         // requisicao para banner
-        api.get('/posts?_sort=date&_limit=1')
+        api.get('/posts?_sort=-date&_limit=1')
             .then((response) => {
                 setBanner(response.data)
             })
 
         // requisicao para post mais vistos
-        api.get('posts?_limit=3')
+        api.get('posts?_sort=views&_limit=3')
             .then((response) => {
                 setMostseen(response.data)
+            })
+
+
+        // requisicao para recentes
+        api.get('posts?_sort=-date&_limit=3')
+            .then((response) => {
+                setMostViewed(response.data);
             })
 
     }, [])
@@ -125,10 +133,14 @@ const Home = () => {
 
             <section className="container ">
                 <h3 className='ml-2 mb-3'>Posts recentes</h3>
-                <div>
-                    <Recent />
-                    <Recent />
-                    <Recent />
+                <div className='row'>
+                    {
+                        mostViewed.map((item) => {
+                            return<Recent key={item.id} content={item}/>
+
+                        } )
+                    }
+                 
 
                 </div>
 

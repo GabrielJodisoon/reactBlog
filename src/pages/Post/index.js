@@ -65,6 +65,8 @@ const Post = () => {
                     <div className="grid-6  mt-6 flex-center">
                         <div className="profile">
                             <img src={user.ImageProfile} className="profile-img" alt="" />
+                        
+
                         </div>
                         <div className="ml-3">
                             <h6>{user.name} {user.surname}</h6>
